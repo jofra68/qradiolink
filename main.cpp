@@ -168,7 +168,7 @@ int main(int argc, char *argv[])
     gr::qtgui::const_sink_c::sptr const_gui = gr::qtgui::const_sink_c::make(256, const_name,1, w->get_const_gui());
     const_gui->set_size(600,400);
     const_gui->set_update_time(0.2);
-    //const_gui->set_line_marker(0,2);
+    /*
     const_gui->qwidget()->setStyleSheet(
                 "QwtPlotCanvas { background-color: #E1DFFF;  \
                 border: 1px solid White; \
@@ -190,7 +190,7 @@ int main(int argc, char *argv[])
                 qproperty-axes_label_font_size: 12; \
                 } ");
 
-
+    */
 
     gr::qtgui::number_sink::sptr rssi_gui = gr::qtgui::number_sink::make(4,0.5,gr::qtgui::NUM_GRAPH_HORIZ,1,w->get_rssi_gui());
     rssi_gui->set_max(0,10);
@@ -200,9 +200,11 @@ int main(int argc, char *argv[])
     rssi_gui->qwidget()->resize(300,50);
     rssi_gui->set_update_time(0.3);
     rssi_gui->set_color(0, "#00cc00", "#A80000");
+    /*
     rssi_gui->qwidget()->setStyleSheet(
             "QwtThermo { background-color: #E1DFFF;" \
             "color: #FF6905;}");
+    */
 
     const std::string fft_name = "fft";
     QRect xy = w->geometry();
@@ -213,6 +215,7 @@ int main(int argc, char *argv[])
     fft_gui->qwidget()->resize(xy.right() -xy.left()-50,xy.bottom()-xy.top()-170);
     fft_gui->set_update_time(0.1);
     fft_gui->set_fft_power_db(-130,0);
+    /*
     fft_gui->qwidget()->setStyleSheet(
                 "QwtPlotCanvas { background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #FFFEA2, stop: 1 #0385FF); \
                 border: 1px solid White; \
@@ -250,6 +253,7 @@ int main(int argc, char *argv[])
                     qproperty-marker_peak_amplitude_color: blue; \
             } \
                 ");
+    */
     fft_gui->enable_rf_freq(true);
 
     QThread *t4 = new QThread;
